@@ -20,7 +20,7 @@ module.exports = {
   /** Listar usuários */
   list: () => {
     const sql = `
-      SELECT * FROM users ORDER BY nome
+      SELECT * FROM users ORDER BY id
     `;
     return new Promise((resolve, reject) => {
       connection.query(sql, (err, result) => {
@@ -41,6 +41,21 @@ module.exports = {
       connection.query(sql, id, (err, result) => {
         if(err) {
           return reject(err, ' Erro ao tentar buscar usuario.');
+        }
+        return resolve(result);
+      });
+    });
+  },
+
+  /** Busca por e-mail */
+  searchByEmail: (email) => {
+    const sql = `
+      SELECT * FROM users WHERE email = ?
+    `;
+    return new Promise((resolve, reject) => {
+      connection.query(sql, email, (err, result) => {
+        if(err) {
+          return reject(err, ' Erro ao tentar buscar e-mail.');
         }
         return resolve(result);
       });
