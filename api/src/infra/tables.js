@@ -14,9 +14,8 @@ class Tables {
         id INT NOT NULL AUTO_INCREMENT,
         dataCriacao DATETIME NOT NULL,
         nome VARCHAR(50) NOT NULL,
-        email VARCHAR(80) NOT NULL,
-        senhaHash VARCHAR(20) NOT NULL,
-        dataNascimento DATETIME NOT NULL,
+        email VARCHAR(110) NOT NULL,
+        senhaHash VARCHAR(255) NOT NULL,
         PRIMARY KEY(id)
       );
     `;
