@@ -14,7 +14,7 @@ class User {
 
   async add(user) {
     if(await User.searchByEmail(user.email)) {
-      throw new ValidationError('Usuário já existente.');
+      throw new ValidationError('E-mail já utilizado por outro usuário.');
     }
 
     this.validatesAttributes();

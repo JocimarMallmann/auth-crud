@@ -5,6 +5,8 @@ const app = require('./src/config/app');
 const connection = require('./src/infra/connection');
 const Tables = require('./src/infra/tables');
 
+require('./redis/blacklist');
+
 const port = 3000;
 
 connection.connect((err) => {

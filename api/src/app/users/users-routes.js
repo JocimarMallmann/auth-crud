@@ -1,27 +1,49 @@
 const usersController = require('./users-controller');
-const passport = require('passport');
+const authMiddlewares = require('./auth-middlewares');
+
 
 module.exports = (app) => {
   app
     .route('/login')
     .post(
-      passport.authenticate('local', {session: false}),
+      authMiddlewares.local,
       usersController.login
+    );
+  
+  app
+    .route('/logout')
+    .get(
+      authMiddlewares.bearer,
+      usersController.logout
     );
 
   app
     .route('/user')
-    .post(usersController.add);
+    .post(
+      authMiddlewares.bearer,
+      usersController.add
+    );
     
   app
     .route('/users')
-    .get(usersController.list);
+    .get(
+      authMiddlewares.bearer,
+      usersController.list
+    );
 
   app
     .route('/user/:id') /** a req, cria esse id pra mim */
-    .delete(usersController.delete)
-    .patch(usersController.update)
-    .get(usersController.searchById);
-
+    .delete(
+      authMiddlewares.bearer,
+      usersController.delete
+    )
+    .patch(
+      authMiddlewares.bearer,
+      usersController.update
+    )
+    .get(
+      authMiddlewares.bearer,
+      usersController.searchById
+    );
   
 }
