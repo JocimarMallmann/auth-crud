@@ -1,0 +1,44 @@
+@import '../../../sass/colors.scss';
+@import '../../../sass/buttons.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  background-color: $background-primary;
+  color: $color-primary;
+  padding: .5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .container {
+    display: flex;
+    align-items: center;
+    .logo {
+      @extend %bold-pointer-outline;
+    }
+  }
+  .user, .login {
+    @extend %bold-pointer-outline;
+  }
+}
+.navigation-menu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: .4rem;
+}
+.mr-2 {
+  margin-right: 1rem;
+}
+.mr-3 {
+  margin-right: 2rem;
+}
+%bold-pointer-outline {
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}

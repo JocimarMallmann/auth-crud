@@ -1,0 +1,20 @@
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Data Criação</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.creationDate }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

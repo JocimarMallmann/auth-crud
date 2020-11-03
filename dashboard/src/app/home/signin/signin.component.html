@@ -1,0 +1,45 @@
+<div class="container">
+  <h4>Login</h4>
+
+  <form [formGroup]="loginForm" (submit)="login()">
+    <fieldset>
+      <div class="form-group">
+        <input #emailInput
+            class=""
+            placeholder="E-mail"
+            autofocus
+            formControlName="email" />
+
+        <app-view-message
+            class="error"
+            *ngIf="loginForm.get('email').errors?.email"
+            [message]="'E-mail inválido'">
+        </app-view-message>
+        <app-view-message
+            class="error"
+            *ngIf="loginForm.get('email').errors?.required"
+            [message]="'E-mail requerido'">
+        </app-view-message>
+      </div>
+
+      <div class="form-group">
+        <input
+            type="password"
+            placeholder="Password"
+            formControlName="password" />
+
+        <app-view-message
+            *ngIf="loginForm.get('password').errors?.required"
+            [message]="'Senha requerida'">
+        </app-view-message>
+      </div>
+    </fieldset>
+
+    <button class="btn btn-primary"
+        type="submit"
+        [disabled]="loginForm.invalid">
+        Login
+    </button>
+
+  </form>
+</div>

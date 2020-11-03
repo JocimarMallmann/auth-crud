@@ -6,7 +6,9 @@ const jwt = require('jsonwebtoken');
 // criando o token
 function createTokenJWT(user) {
   const payload = {
-    user: user.id
+    id: user.id,
+    user: user.nome,
+    email: user.email
   }
 
   /**@method sign() gera o token e assina baseado no payload e da senha secreta do servidor.*/
@@ -27,8 +29,9 @@ module.exports = {
     const token = createTokenJWT(req.user); // req.user, é colocado no momento que o passport.authenticate é finalizado
 
     // adicionando token ao cabecalho da resposta
-    res.set('Authorization', token);
+    res.set({'Authorization': token});
 
+    console.log('autenticado ', req.user);
     return res.status(204).send();
   },
 
@@ -66,7 +69,15 @@ module.exports = {
 
   list: async (req, res) => {
     try {
-      const users = await User.list();
+      let users = await User.list();
+      users = users.map((user) => {
+        return {
+          id: user.id,
+          creationDate: user.dataCriacao,
+          name: user.nome,
+          email: user.email
+        }
+      });
       res.status(201).json(users);
     } catch(err) {
       res.status(403).json({ err: err.message });

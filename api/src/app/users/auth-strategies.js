@@ -67,7 +67,7 @@ passport.use(
         /**@method verify() - metodo que verifica se o token é válido, se for, retorna o payload, se não, um erro */
         const payload = jwt.verify(token, process.env.SENHA_SECRETA);
 
-        const user = await User.searchById(payload.user);
+        const user = await User.searchById(payload.id);
         done(null, user, { token: token });
       } catch(err) {
         done(err);

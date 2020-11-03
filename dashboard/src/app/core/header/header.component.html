@@ -1,0 +1,30 @@
+<header class="header">
+  <div class="container">
+
+    <span class="logo mr-3" [routerLink]="['dashboards']">System</span>
+    <nav class="navigation" showIfLogged>
+      <ul class="navigation-menu">
+        <li
+          class="btn"
+          [routerLink]="['dashboards']">
+          Usuários
+        </li>
+        <li
+          class="btn"
+          [routerLink]="['dashboards/create-user']">
+          Criar usuário
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <div class="user" *ngIf="user$ | async as user; else pleaseLogin">
+    <span class="mr-2">{{ user?.user }}</span>
+    <span (click)="logout()">(Logout)</span>
+  </div>
+  <ng-template #pleaseLogin>
+    <div class="login" [routerLink]="['']">Please Login</div>
+  </ng-template>
+
+</header>

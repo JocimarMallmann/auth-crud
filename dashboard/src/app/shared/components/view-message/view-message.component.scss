@@ -1,0 +1,9 @@
+@import '../../../../sass/colors.scss';
+
+.error {
+  color: $color-error;
+}
+.message {
+  position: absolute;
+  font-size: .85rem;
+}

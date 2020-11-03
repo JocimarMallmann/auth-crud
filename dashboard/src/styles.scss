@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import './sass/reset.scss';
+@import './sass/colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body, html {
+  height: 100%;
+  max-height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
