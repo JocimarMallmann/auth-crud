@@ -1,0 +1,35 @@
+@import '../../../sass/buttons.scss';
+@import '../../../sass/colors.scss';
+.td-actions {
+  display: flex;
+  .btn-adapt {
+    max-width: 92px;
+    font-size: .8rem;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    margin-right: .5rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+.table {
+  border-collapse: collapse;
+  width: 50%;
+  @extend %width-padding-columns;
+}
+.row-th {
+  th {
+    @extend %width-padding-columns;
+    font-weight: bold;
+  }
+}
+.row-td {
+  td {
+    @extend %width-padding-columns;
+  }
+}
+%width-padding-columns {
+  padding: .5rem;
+  border: 1px solid $border-color-table;
+}

@@ -1,3 +1,4 @@
+@import './colors.scss';
 .btn {
   padding: .75rem 1.5rem;
   border: none;
@@ -11,8 +12,14 @@
   transition: .5s background;
   &.btn-primary {
     background-color: $background-primary;
+    &:hover {
+      background-color: darken($background-primary, 10%);
+    }
   }
-  &:hover {
-    background-color: darken($background-primary, 10%);
+  &.btn-danger {
+    background-color: $background-danger;
+    &:hover {
+      background-color: darken($background-danger, 10%);
+    }
   }
 }

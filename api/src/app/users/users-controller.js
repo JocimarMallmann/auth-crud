@@ -29,9 +29,10 @@ module.exports = {
     const token = createTokenJWT(req.user); // req.user, é colocado no momento que o passport.authenticate é finalizado
 
     // adicionando token ao cabecalho da resposta
-    res.set({'Authorization': token});
+    res.set({'authorization': token});
 
     console.log('autenticado ', req.user);
+
     return res.status(204).send();
   },
 
@@ -109,20 +110,20 @@ module.exports = {
   update: async (req, res) => {
     try {
       console.log('req.body controller update ', req.body);
-      const {nome, email, senhaHash} = req.body;
+      const {nome, email} = req.body.values;
       const id = req.params.id;
 
       const user = await User.searchById(id);
-      const senhaHashHash = await user.addPassword(senhaHash);
+      // const senhaHashHash = await user.addPassword(senhaHash);
 
       await User.update(
         user.id,
-        {nome, email, senhaHash: senhaHashHash}
+        {nome, email}
       );
 
       res.status(201).json();
     } catch(err) {
-      res.status(403).json({ err: err.message });
+      res.status(403).json({ err: err.message, req: req.body });
     }
   },
 

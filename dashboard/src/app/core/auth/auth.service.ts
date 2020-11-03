@@ -27,9 +27,9 @@ export class AuthService {
       { observe: 'response' }
     ).pipe(
       tap((res: HttpResponse<any>) => {
-        const token = res.headers.get('Authorization');
-        console.log(token);
-
+        const token = res.headers.get('authorization');
+        // console.log(token);
+        // console.log('headers recebido api, ', res.headers);
         this.userService.setToken(token);
       })
     );

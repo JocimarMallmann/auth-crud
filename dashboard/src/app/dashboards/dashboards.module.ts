@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardsComponent } from './dashboards.component';
 
 import { DashboardsRoutingModule } from './dashboards.routing.module';
+import { ListModule } from './list/list.module';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { DashboardsRoutingModule } from './dashboards.routing.module';
   ],
   imports: [
     CommonModule,
+    ListModule,
     DashboardsRoutingModule
   ],
   exports: [

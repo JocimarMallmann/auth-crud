@@ -1,0 +1,33 @@
+@import '../../../sass/colors.scss';
+@import '../../../sass/buttons.scss';
+.container {
+  @extend %flex-columnn;
+  h4 {
+    margin-bottom: 3rem;
+  }
+  .form {
+    width: 50%;
+    @extend %flex-columnn;
+    .form-group {
+      margin-bottom: 3rem;
+    }
+  }
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.25rem;
+  input {
+    padding: .5rem;
+    margin-bottom: .30rem;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1rem;
+    border: 1px solid $border-color-input;
+  }
+}
+
+%flex-columnn {
+  display: flex;
+  flex-direction: column;
+}

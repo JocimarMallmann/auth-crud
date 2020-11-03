@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { Users } from '../users';
+import { Users, User } from '../users';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -11,13 +12,15 @@ import { UsersService } from '../users.service';
 export class ListComponent implements OnInit {
 
   @Input() users: Users;
+  user: User;
 
   constructor(
-    private usersService: UsersService
+    private usersService: UsersService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    // Próximo passo, interceptar o http request mandando o token junto
+
     this.usersService.listUsers()
       .subscribe(
         (users) => {
@@ -29,6 +32,15 @@ export class ListComponent implements OnInit {
           console.log(err);
         }
       )
+  }
+
+  update(id: number) {
+    this.router.navigate(['dashboards/user', id]);
+  }
+
+  delete(id: number) {
+    console.log(id);
+    // this.usersService.delete(id);
   }
 
 }

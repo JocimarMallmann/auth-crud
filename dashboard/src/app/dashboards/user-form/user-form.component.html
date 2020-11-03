@@ -1,1 +1,37 @@
-<p>user-form works!</p>
+<div class="container">
+  <h4>Editando</h4>
+
+  <form [formGroup]="editForm" (submit)="send()" class="form">
+
+    <div class="form-group">
+      <input
+          type="text"
+          placeholder="Nome"
+          formControlName="nome">
+      <app-view-message
+          *ngIf="editForm.get('nome').errors?.required"
+          [message]="'Nome requerido'">
+      </app-view-message>
+    </div>
+
+    <div class="form-group">
+      <input
+          type="text"
+          placeholder="E-mail"
+          formControlName="email">
+      <app-view-message
+          *ngIf="editForm.get('email').errors?.required"
+          [message]="'E-mail requerido'">
+      </app-view-message>
+      <app-view-message
+          *ngIf="editForm.get('email').errors?.email"
+          [message]="'E-mail inválido'">
+      </app-view-message>
+    </div>
+
+    <button class="btn btn-primary"
+        type="submit">
+        Enviar
+    </button>
+  </form>
+</div>

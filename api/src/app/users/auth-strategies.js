@@ -62,6 +62,7 @@ passport.use(
   new BearerStrategy(
     async (token, done) => {
       try {
+        // console.log('BearerStrategy token recebido, ', token);
         await tokenIsOnBlacklist(token);
 
         /**@method verify() - metodo que verifica se o token é válido, se for, retorna o payload, se não, um erro */

@@ -1,19 +1,30 @@
 <div>
-  <table>
+  <table class="table">
     <thead>
-      <tr>
+      <tr class="row-th">
         <th>Id</th>
         <th>Data Criação</th>
         <th>Nome</th>
         <th>E-mail</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
+      <tr *ngFor="let user of users;"
+        class="row-td"
+        [routerLink]="['user', user.id]">
         <td>{{ user.id }}</td>
         <td>{{ user.creationDate }}</td>
         <td>{{ user.name }}</td>
         <td>{{ user.email }}</td>
+        <td class="td-actions">
+          <button class="btn btn-primary btn-adapt" (click)="update(user.id)">
+            Editar
+          </button>
+          <button class="btn btn-danger btn-adapt" (click)="delete(user.id)">
+            Deletar
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
