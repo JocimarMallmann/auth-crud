@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
+import { UserService } from 'src/app/core/user/user.service';
 import { Users, User } from '../users';
 import { UsersService } from '../users.service';
 
@@ -16,6 +18,7 @@ export class ListComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
+    private userService: UserService,
     private router: Router
   ) { }
 
@@ -34,13 +37,27 @@ export class ListComponent implements OnInit {
       )
   }
 
+  // O update será efetivamente feito no componente user-form.component
   update(id: number) {
     this.router.navigate(['dashboards/user', id]);
   }
 
   delete(id: number) {
-    console.log(id);
-    // this.usersService.delete(id);
+    this.usersService.delete(id)
+      .pipe(
+        switchMap(() => this.usersService.listUsers())
+      )
+      .subscribe(
+        (users) => {
+          this.users = users;
+        },
+        (err) => console.log(err)
+      );
+    // Se o usuário se auto deletar
+    if(this.userService.getUserId() === id) {
+      this.userService.logout();
+      this.router.navigate(['']);
+    }
   }
 
 }

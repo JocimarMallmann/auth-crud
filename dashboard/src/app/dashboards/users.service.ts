@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 
-import { Users, User } from './users';
+import { Users, User, NewUser } from './users';
 
 const API = environment.apiUrl;
 
@@ -23,13 +23,21 @@ export class UsersService {
     return this.http.get<User>(API + '/user/' + id);
   }
 
+  add(user: NewUser) {
+    return this.http.post(API + '/user/', { ...user });
+  }
+
   update(id: number, values) {
     console.log('update service');
-    return this.http.patch(API + '/user/' + id, { values });
+    return this.http.patch(API + '/user/' + id, { ...values });
   }
 
   delete(id: number) {
     return this.http.delete(API + '/user/' + id);
+  }
+
+  filterName(name: string): Observable<User> {
+    return this.http.get<User>(API + '/user/filter/' + name);
   }
 
 }

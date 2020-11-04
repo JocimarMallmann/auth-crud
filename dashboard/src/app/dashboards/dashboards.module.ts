@@ -5,6 +5,7 @@ import { DashboardsComponent } from './dashboards.component';
 
 import { DashboardsRoutingModule } from './dashboards.routing.module';
 import { ListModule } from './list/list.module';
+import { CreateUserFormModule } from './create-user-form/create-user-form.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { ListModule } from './list/list.module';
   imports: [
     CommonModule,
     ListModule,
+    CreateUserFormModule,
     DashboardsRoutingModule
   ],
   exports: [

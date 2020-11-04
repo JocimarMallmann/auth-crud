@@ -68,7 +68,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
       .update(this.idUser, values)
       .subscribe(
         (res) => {
-          console.log('res ', res);
+          console.log('Editado com sucesso!');
         },
         (err) => {
           console.log(err);

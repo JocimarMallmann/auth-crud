@@ -12,7 +12,7 @@
     <tbody>
       <tr *ngFor="let user of users;"
         class="row-td"
-        [routerLink]="['user', user.id]">
+        > <!--[routerLink]="['user', user.id]"-->
         <td>{{ user.id }}</td>
         <td>{{ user.creationDate }}</td>
         <td>{{ user.name }}</td>

@@ -62,12 +62,12 @@ class User {
     return usersDao.update(id, values);
   }
 
-  async filterName(name) {
+  static async filterName(name) {
     const user = await usersDao.filterName(name);
     if(!user) {
       return null;
     }
-    return new User(user);
+    return new User(user[0]);
   }
 
   validatesAttributes() {

@@ -1,5 +1,5 @@
 <div class="container">
-  <h4>Editando</h4>
+  <h4>Criar usuário</h4>
 
   <form [formGroup]="createUserForm" (submit)="send()" class="form">
 
@@ -7,9 +7,9 @@
       <input
           type="text"
           placeholder="Nome"
-          formControlName="nome">
+          formControlName="name">
       <app-view-message
-          *ngIf="createUserForm.get('nome').errors?.required"
+          *ngIf="createUserForm.get('name').errors?.required"
           [message]="'Nome requerido'">
       </app-view-message>
     </div>
@@ -31,7 +31,7 @@
 
     <div class="form-group">
       <input
-          type="text"
+          type="password"
           placeholder="Senha"
           formControlName="password">
       <app-view-message
@@ -41,7 +41,8 @@
     </div>
 
     <button class="btn btn-primary"
-        type="submit">
+        type="submit"
+        [disabled]="createUserForm.invalid">
         Enviar
     </button>
   </form>

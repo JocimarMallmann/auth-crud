@@ -13,6 +13,7 @@ export class UserService {
 
   private userBehaviorSubject = new BehaviorSubject<User>(null);
   private userName: string;
+  private userId: number;
 
   constructor(private tokenService: TokenService) {
     // caso feche o navegador e abra de novo, se tiver token, decodifica o payload e traz as informações do usuário
@@ -33,6 +34,9 @@ export class UserService {
   getUserName(): string {
     return this.userName;
   }
+  getUserId(): number {
+    return this.userId;
+  }
 
   isLogged(): boolean {
     return this.tokenService.hasToken();
@@ -50,6 +54,7 @@ export class UserService {
 
     this.userBehaviorSubject.next(user);
     this.userName = user.user;
+    this.userId = user.id;
   }
 
 }

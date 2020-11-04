@@ -22,6 +22,15 @@ function createTokenJWT(user) {
   return token;
 }
 
+function transformUser(user) {
+  return {
+    id: user.id,
+    creationDate: user.dataCriacao,
+    name: user.nome,
+    email: user.email
+  }
+}
+
 module.exports = {
 
   // Temos a certeza de que o usuário já está autenticado, devido a um midlleware na rota já ter feito a autenticação
@@ -53,6 +62,7 @@ module.exports = {
     const dataCriacao = dateFormat(date, 'yyyy-mm-dd HH:MM:ss');
     const { nome, email, senhaHash } = req.body;
     
+    console.log('req.body de add ', req.body);
     try {
       const user = new User({
         dataCriacao,
@@ -72,12 +82,7 @@ module.exports = {
     try {
       let users = await User.list();
       users = users.map((user) => {
-        return {
-          id: user.id,
-          creationDate: user.dataCriacao,
-          name: user.nome,
-          email: user.email
-        }
+        return transformUser(user);
       });
       res.status(201).json(users);
     } catch(err) {
@@ -110,7 +115,7 @@ module.exports = {
   update: async (req, res) => {
     try {
       console.log('req.body controller update ', req.body);
-      const {nome, email} = req.body.values;
+      const {nome, email} = req.body;
       const id = req.params.id;
 
       const user = await User.searchById(id);
@@ -127,12 +132,17 @@ module.exports = {
     }
   },
 
-  // filterName: async (req, res) => {
-  //   try {
+  filterName: async (req, res) => {
+    try {
+      const { userName } = req.params;
+    
+      const user = await User.filterName(userName);
+      let transformedUser = transformUser(user);
 
-  //   } catch(err) {
-  //     res.status(403).json({ err: err.message });
-  //   }
-  // }
+      res.status(201).json({ ...transformedUser })
+    } catch(err) {
+      res.status(403).json({ err: err.message });
+    }
+  }
 
 };

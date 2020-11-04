@@ -1,0 +1,30 @@
+@import '../../sass//vars.scss';
+.container {
+  padding: .7rem;
+  h4 {
+    margin-bottom: 3rem;
+    font-size: 2rem;
+  }
+}
+.info {
+  display: flex;
+  justify-content: flex-start;
+  @media #{ $mq-mobile } {
+    flex-direction: column;
+  }
+  .group {
+    margin-right: 10rem;
+    @media #{ $mq-mobile } {
+      margin-right: 0;
+      margin-bottom: 3rem;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

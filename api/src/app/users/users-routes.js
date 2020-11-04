@@ -45,5 +45,12 @@ module.exports = (app) => {
       authMiddlewares.bearer,
       usersController.searchById
     );
+
+  app
+    .route('/user/filter/:userName')
+    .get(
+      authMiddlewares.bearer,
+      usersController.filterName
+    );
   
 }

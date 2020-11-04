@@ -28,6 +28,12 @@
   td {
     @extend %width-padding-columns;
   }
+  &:nth-child(even) {
+    background-color: $grey-100;
+  }
+  &:hover {
+    background-color: $grey-300;
+  }
 }
 %width-padding-columns {
   padding: .5rem;
