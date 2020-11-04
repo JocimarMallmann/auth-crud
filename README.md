@@ -1,6 +1,6 @@
 # API Node, authentication + crud | Front-end Angular 10 | Database Mysql
 
-##### Requisitos funcionais do sistema Node inclui:
+#### Requisitos funcionais do sistema Node inclui:
 - autenticação (login e logout)
 - adicionar novos usuários
 - listar usuários
@@ -8,7 +8,7 @@
 - deletar usuários
 - atualizar usuários
 - buscar/filtrar usuário por nome
-##### Segurança:
+#### Segurança:
 - função de hashing aplicada nas senhas.
 - token de acesso, jsonwebtoken. (obs: tempo de expiração de 60 minutos, ainda não é aplicado refresh no token, por isso o tempo de expiração é alto).
 - tokens de logout são adicionados numa blacklist na base de dados Redis, e não serão mais válidos.
@@ -16,7 +16,7 @@
 - Rotas devidamente protegidas pelas estratégias de autenticação no servidor.
 - No front-end as rotas estão protegidas de acordo. Se **não** estiver autenticado só é possível acessar a tela de login. E quando já autenticado, não é possível acessar a tela de login.
 
-##### Rotas front-end
+#### Rotas front-end
 - /login  
 Efetua Login, ativa o componente de signin.
 
@@ -37,7 +37,7 @@ Qualquer rota inválida, isto é, não existente, o sistema encaminhara para rot
 
 Observações adicionais: Apesar do sistema não ser muito pesado em tamanho, foi utilizada as técnicas de 'Code splitting' e 'Lazy loading', que, basicamente é o separamento dos módulos e o seu carregamento sob demanda.
 
-##### Tecnologias utilizadas
+#### Tecnologias utilizadas
 - Back-end  
 Node.js, MySql
 
