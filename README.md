@@ -17,31 +17,31 @@
 - No front-end as rotas estão protegidas de acordo. Se **não** estiver autenticado só é possível acessar a tela de login. E quando já autenticado, não é possível acessar a tela de login.
 
 ##### Rotas front-end
-- /login
+- /login  
 Efetua Login, ativa o componente de signin.
 
-- /user/filter/:userName
+- /user/filter/:userName  
 Filtra por nome, ativa o componente de perfil do usuário exibindo suas informações.
 
-- /dashboards
+- /dashboards  
 A primaira rota a ser carregada após o login, ativa o componente dashboards, onde busca a lista de usuários e ativa o componente list que exibe os dados numa tabela.
 
-- dashboards/user/:id
+- dashboards/user/:id  
 Busca por id, ativa o componente user-form, podendo editar o usuário, (obs: Na tabela do componente list exibida no dashboards, existe uma coluna 'actions', nesta coluna tem os botões de 'Editar' e 'Deletar' usuário, levando pra essa respectiva rota).
 
-- /dashboards/create-user
+- /dashboards/create-user  
 Rota para criar um novo usuário, ativa o componente create-user-form
 
-- /not-found
+- /not-found  
 Qualquer rota inválida, isto é, não existente, o sistema encaminhara para rota /not-found, ativando o respectivo componente not-found.
 
 Observações adicionais: Apesar do sistema não ser muito pesado em tamanho, foi utilizada as técnicas de 'Code splitting' e 'Lazy loading', que, basicamente é o separamento dos módulos e o seu carregamento sob demanda.
 
 ##### Tecnologias utilizadas
-- Back-end
+- Back-end  
 Node.js, MySql
 
-- Front-end
+- Front-end  
 Angular 10, Sass
 
 Observações adicionais: Projeto back-end desenvolvido utilizando o padrão arquitetural Model View Controler (MVC) e o padrão Data Access Object (DAO).
